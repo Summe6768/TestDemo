@@ -26,8 +26,8 @@ public class DbManger {
         return mySqLiteHelper;
     }
 
-    public static MySQLiteHelper2 getInstance2(Context context){
-        if (mySQLiteHelper2 == null){
+    public static MySQLiteHelper2 getInstance2(Context context) {
+        if (mySQLiteHelper2 == null) {
             mySQLiteHelper2 = new MySQLiteHelper2(context);
         }
         return mySQLiteHelper2;
@@ -41,7 +41,6 @@ public class DbManger {
             }
         }
     }
-
 
 
     /**
@@ -72,6 +71,15 @@ public class DbManger {
             list.add(person);
         }
         return list;
+    }
+
+    public static int getDataCount(SQLiteDatabase db, String tableName) {
+        int count = 0;
+        if (db != null) {
+            Cursor cursor = db.rawQuery("select * from " + tableName + "", null);
+            count = cursor.getCount();
+        }
+        return count;
     }
 
 }

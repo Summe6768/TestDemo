@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".sqlite2.MySQLiteActivity"></activity>
+        <activity android:name=".thisandsuper.ThisAndSuperActivity"></activity>
+        <activity android:name=".sqlite2.MySQLiteActivity" />
         <activity android:name=".sqlite.SqlLiteActivity" />
         <activity android:name=".broadcastreceiver.BroadcastReceiverActivity" />
         <activity android:name=".mvvm.MvvmActivity" />

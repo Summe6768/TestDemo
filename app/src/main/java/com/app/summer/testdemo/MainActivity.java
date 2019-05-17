@@ -11,6 +11,7 @@ import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
 import com.app.summer.testdemo.mvvm.MvvmActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
+import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnBroadcastReceiver;
     private Button mBtnSqLite;
     private Button mBtnSqLite2;
+    private Button mBtnThisAndSuper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBroadcastReceiver = findViewById(R.id.btnBroadcastReceiver);
         mBtnSqLite = findViewById(R.id.btnSqLite);
         mBtnSqLite2 = findViewById(R.id.btnSqLite2);
+        mBtnThisAndSuper = findViewById(R.id.btnThisAndSuper);
     }
 
     private void initOnClick() {
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnBroadcastReceiver.setOnClickListener(this);
         mBtnSqLite.setOnClickListener(this);
         mBtnSqLite2.setOnClickListener(this);
+        mBtnThisAndSuper.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnSqLite2:
                 startActivity(new Intent(this, MySQLiteActivity.class));
+                break;
+            case R.id.btnThisAndSuper:
+                startActivity(new Intent(this, ThisAndSuperActivity.class));
                 break;
         }
     }

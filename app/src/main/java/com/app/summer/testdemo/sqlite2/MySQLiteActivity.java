@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.summer.testdemo.R;
+import com.app.summer.testdemo.sqlite.utils.Constant;
 import com.app.summer.testdemo.sqlite.utils.DbManger;
 import com.app.summer.testdemo.sqlite2.utils.Bean;
 import com.app.summer.testdemo.sqlite2.utils.Constant2;
@@ -43,6 +44,10 @@ public class MySQLiteActivity extends AppCompatActivity implements View.OnClickL
 
     private MySQLiteHelper2 helper2;
     private SQLiteDatabase db;
+
+    private int tobleNum;//当前控件加载数据的总条目
+    private int pageSize = 15;//每页条数
+    private int pageNum;//总页码
 
 
     @Override
@@ -83,22 +88,46 @@ public class MySQLiteActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnInsert:
                 //插入
                 strEdInsert = edInsert.getText().toString();
-                if (strEdInsert != null && !"".equals(strEdInsert)) {
-                    db = helper2.getWritableDatabase();
-                    //db.execSQL("delete from " + Constant2.TABLE_NAME + "");
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(Constant2._ID, 1);
-                    contentValues.put(Constant2.TEXT, strEdInsert);
-                    long l = db.insert(Constant2.TABLE_NAME, null, contentValues);
-                    if (l > 0) {
-                        Toast.makeText(this, "插入成功", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "插入失败", Toast.LENGTH_SHORT).show();
-                    }
-                    db.close();
-                } else {
-                    Toast.makeText(this, "不能输入空的", Toast.LENGTH_SHORT).show();
+
+                db = helper2.getWritableDatabase();
+                db.delete(Constant2.TABLE_NAME, null, null);
+                db.beginTransaction();
+                for (int i = 0; i <= 30; i++) {
+                    String sql = "insert into " + Constant2.TABLE_NAME + " values(" + i + ",'张三" + i + "')";
+                    db.execSQL(sql);
                 }
+                db.setTransactionSuccessful();
+                db.endTransaction();
+                db.close();
+
+//                if (strEdInsert != null && !"".equals(strEdInsert)) {
+//                    db = helper2.getWritableDatabase();
+//                    //开始事务
+//                    db.beginTransaction();
+//                    //db.execSQL("delete from " + Constant2.TABLE_NAME + "");
+//
+//                    ContentValues contentValues = new ContentValues();
+//                    contentValues.put(Constant2._ID, 1);
+//                    contentValues.put(Constant2.TEXT, strEdInsert);
+//
+//                    long l = db.insert(Constant2.TABLE_NAME, null, contentValues);
+//
+//                    //提交事务
+//                    db.setTransactionSuccessful();
+//
+//                    //关闭事务
+//                    db.endTransaction();
+//
+//                    if (l > 0) {
+//                        Toast.makeText(this, "插入成功", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(this, "插入失败", Toast.LENGTH_SHORT).show();
+//                    }
+//                    db.close();
+//
+//                } else {
+//                    Toast.makeText(this, "不能输入空的", Toast.LENGTH_SHORT).show();
+//                }
                 break;
             case R.id.btnUpData:
                 //修改
@@ -132,14 +161,18 @@ public class MySQLiteActivity extends AppCompatActivity implements View.OnClickL
                 db = helper2.getWritableDatabase();
                 Cursor cursor = db.query(Constant2.TABLE_NAME,
                         null,
-                        Constant2._ID + "=?",
-                        new String[]{"1"},
+                        null,
+                        null,
                         null,
                         null,
                         null);
                 if (cursor.getCount() == 0) {
                     Toast.makeText(this, "数据表是空的", Toast.LENGTH_SHORT).show();
                 }
+
+                tobleNum = DbManger.getDataCount(db, Constant2.TABLE_NAME);
+                //根据总条目与每页展示数据条目，获取总页数
+                pageNum = (int) Math.ceil(tobleNum / (double) pageSize);
 
 
 //                SimpleCursorAdapter adapter = new SimpleCursorAdapter(
@@ -151,7 +184,7 @@ public class MySQLiteActivity extends AppCompatActivity implements View.OnClickL
 //                        SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 //                listView.setAdapter(adapter);
 
-                MyCursorAdapter myCursorAdapter = new MyCursorAdapter(this,cursor,CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+                MyCursorAdapter myCursorAdapter = new MyCursorAdapter(this, cursor, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
                 listView.setAdapter(myCursorAdapter);
 
 //                List<Bean> beanList = dataQuery(cursor);

@@ -53,5 +53,11 @@
         android:layout_height="wrap_content"
         android:text="SqLite2"
         android:textAllCaps="false" />
+    <Button
+        android:id="@+id/btnThisAndSuper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ThisAndSuper"
+        android:textAllCaps="false" />
 
 </LinearLayout>

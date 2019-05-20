@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.summer.testdemo">
 
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".thisandsuper.ThisAndSuperActivity"></activity>
+        <activity android:name=".service.ServiceActivity"></activity>
+        <activity android:name=".thisandsuper.ThisAndSuperActivity" />
         <activity android:name=".sqlite2.MySQLiteActivity" />
         <activity android:name=".sqlite.SqlLiteActivity" />
         <activity android:name=".broadcastreceiver.BroadcastReceiverActivity" />
@@ -28,7 +31,12 @@
 
         <receiver android:name=".broadcastreceiver.Demo1Receiver">
             <intent-filter>
-                <action android:name="com.hhh" />
+                <action android:name="BC_one" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcastreceiver.Demo1Receiver2">
+            <intent-filter>
+                <action android:name="BC_one" />
             </intent-filter>
         </receiver>
     </application>

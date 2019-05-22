@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.summer.testdemo.R;
+import com.app.summer.testdemo.enumtest.TestEnum;
 import com.app.summer.testdemo.sqlite.bean.Person;
 import com.app.summer.testdemo.sqlite.utils.Constant;
 import com.app.summer.testdemo.sqlite.utils.DbManger;

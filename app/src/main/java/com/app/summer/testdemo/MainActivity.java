@@ -3,17 +3,26 @@ package com.app.summer.testdemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
 import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
+import com.app.summer.testdemo.enumtest.TestEnum;
+import com.app.summer.testdemo.instance.TestClass;
 import com.app.summer.testdemo.mvvm.MvvmActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
 import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "MainActivity";
+
+    private HashMap<Object,Object> config = new HashMap<>();
 
     private Button mBtnDagger2;
     private Button mBtnMvvm;
@@ -26,6 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        for (TestEnum testEnum : TestEnum.values()) {
+            Log.e(TAG, "onCreate: " + testEnum);
+        }
+        config.put(TestEnum.A,"123");
+
 
 
         initView();

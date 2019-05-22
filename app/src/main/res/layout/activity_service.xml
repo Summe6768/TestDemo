@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".service.ServiceActivity">
 
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="启动Service"/>
 </LinearLayout>

@@ -16,4 +16,5 @@ public class TestSuperClass extends Country{
         Log.e("TAG", "name: " + name );
         Log.e("TAG", "superName: " + super.name );
     }
+
 }

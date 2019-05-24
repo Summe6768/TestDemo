@@ -9,27 +9,25 @@ import android.widget.Button;
 
 import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
 import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
+import com.app.summer.testdemo.contentprovider.ContentProviderActivity;
 import com.app.summer.testdemo.enumtest.TestEnum;
-import com.app.summer.testdemo.instance.TestClass;
+import com.app.summer.testdemo.instance.GongChang;
+import com.app.summer.testdemo.instance.interfacetest.Eat;
+
 import com.app.summer.testdemo.mvvm.MvvmActivity;
+import com.app.summer.testdemo.rxjava.RxJavaActivity;
+import com.app.summer.testdemo.service.ServiceActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
 import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private HashMap<Object,Object> config = new HashMap<>();
-
-    private Button mBtnDagger2;
-    private Button mBtnMvvm;
-    private Button mBtnBroadcastReceiver;
-    private Button mBtnSqLite;
-    private Button mBtnSqLite2;
-    private Button mBtnThisAndSuper;
+    private HashMap<Object, Object> config = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,37 +35,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         for (TestEnum testEnum : TestEnum.values()) {
-            Log.e(TAG, "onCreate: " + testEnum);
+            //Log.e(TAG, "onCreate: " + testEnum);
         }
-        config.put(TestEnum.A,"123");
+        config.put(TestEnum.A, "123");
+
+        //简单工厂设计模式
+        gongchang();
 
 
-
-        initView();
-        initOnClick();
     }
 
 
-    private void initView() {
-        mBtnDagger2 = findViewById(R.id.btnDagger2);
-        mBtnMvvm = findViewById(R.id.btnMvvm);
-        mBtnBroadcastReceiver = findViewById(R.id.btnBroadcastReceiver);
-        mBtnSqLite = findViewById(R.id.btnSqLite);
-        mBtnSqLite2 = findViewById(R.id.btnSqLite2);
-        mBtnThisAndSuper = findViewById(R.id.btnThisAndSuper);
-    }
 
-    private void initOnClick() {
-        mBtnDagger2.setOnClickListener(this);
-        mBtnMvvm.setOnClickListener(this);
-        mBtnBroadcastReceiver.setOnClickListener(this);
-        mBtnSqLite.setOnClickListener(this);
-        mBtnSqLite2.setOnClickListener(this);
-        mBtnThisAndSuper.setOnClickListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
+    public void onClickMainActivity(View v) {
         switch (v.getId()) {
             case R.id.btnDagger2:
                 startActivity(new Intent(this, Dagger2Activity.class));
@@ -87,6 +68,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnThisAndSuper:
                 startActivity(new Intent(this, ThisAndSuperActivity.class));
                 break;
+            case R.id.btnService:
+                startActivity(new Intent(this, ServiceActivity.class));
+                break;
+            case R.id.btnContentProvider:
+                startActivity(new Intent(this, ContentProviderActivity.class));
+                break;
+            case R.id.btnRxJava:
+                startActivity(new Intent(this, RxJavaActivity.class));
+                break;
+            case R.id.btnKotlin:
+                //startActivity(new Intent(this, KotlinActivity.class));
+                break;
+        }
+    }
+
+
+
+    private void gongchang() {
+        GongChang gongChang = new GongChang();
+        Eat eat = gongChang.getEat("shutiao");
+        if (eat != null) {
+            eat.est();
+        }
+        Eat eat2 = gongChang.getEat("hanbao");
+        if (eat2 != null) {
+            eat2.est();
+        }
+        Eat eat3 = gongChang.getEat("jiji");
+        if (eat3 != null) {
+            eat3.est();
         }
     }
 }

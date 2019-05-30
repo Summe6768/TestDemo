@@ -6,6 +6,8 @@ import android.text.TextUtils;
 
 import com.app.summer.testdemo.Dagger2.Component.AppComponent.AppComponent;
 import com.app.summer.testdemo.Dagger2.Component.AppComponent.DaggerAppComponent;
+import com.taobao.sophix.SophixManager;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,10 +24,11 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        //Bugly初始化
-//        CrashReport.initCrashReport(getApplicationContext(), "46ea81ed85", true);
+        //Bugly初始化
+        CrashReport.initCrashReport(getApplicationContext(), "46ea81ed85", true);
 
         appComponent = DaggerAppComponent.create();
+
 
     }
 

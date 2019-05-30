@@ -19,6 +19,7 @@
         app:titleTextColor="#fff"
         app:titleTextSize="120" />
 
+
     <Button
         android:id="@+id/btnDagger2"
         android:layout_width="match_parent"
@@ -96,6 +97,21 @@
         android:text="Kotlin"
         android:textAllCaps="false"
         android:onClick="onClickMainActivity"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="热更新1.1测试"/>
+
+    <Button
+        android:id="@+id/btnMvp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mvp"
+        android:textAllCaps="false"
+        android:onClick="onClickMainActivity"/>
+
+
 
 
 </LinearLayout>

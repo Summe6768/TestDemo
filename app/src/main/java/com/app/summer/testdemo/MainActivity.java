@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.app.summer.mvp.activity.MvpActivity;
 import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
 import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
 import com.app.summer.testdemo.contentprovider.ContentProviderActivity;
@@ -14,12 +16,15 @@ import com.app.summer.testdemo.enumtest.TestEnum;
 import com.app.summer.testdemo.instance.GongChang;
 import com.app.summer.testdemo.instance.interfacetest.Eat;
 
+import com.app.summer.testdemo.kotlin.KotlinActivity;
 import com.app.summer.testdemo.mvvm.MvvmActivity;
 import com.app.summer.testdemo.rxjava.RxJavaActivity;
 import com.app.summer.testdemo.service.ServiceActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
 import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
+import com.app.summer.testdemo.utlis.APKVersionCodeUtils;
+
 
 import java.util.HashMap;
 
@@ -78,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RxJavaActivity.class));
                 break;
             case R.id.btnKotlin:
-                //startActivity(new Intent(this, KotlinActivity.class));
+                startActivity(new Intent(this, KotlinActivity.class));
+                break;
+            case R.id.btnMvp:
+                startActivity(new Intent(this, MvpActivity.class));
                 break;
         }
     }

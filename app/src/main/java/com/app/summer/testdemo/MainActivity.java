@@ -13,6 +13,7 @@ import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
 import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
 import com.app.summer.testdemo.contentprovider.ContentProviderActivity;
 import com.app.summer.testdemo.enumtest.TestEnum;
+import com.app.summer.testdemo.fanxing.FanxingActivity;
 import com.app.summer.testdemo.instance.GongChang;
 import com.app.summer.testdemo.instance.interfacetest.Eat;
 
@@ -23,6 +24,7 @@ import com.app.summer.testdemo.service.ServiceActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
 import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
+import com.app.summer.testdemo.thread.ThreadActivity;
 import com.app.summer.testdemo.utlis.APKVersionCodeUtils;
 
 
@@ -49,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     public void onClickMainActivity(View v) {
@@ -88,9 +88,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnMvp:
                 startActivity(new Intent(this, MvpActivity.class));
                 break;
+            case R.id.btnFanxing:
+                startActivity(new Intent(this, FanxingActivity.class));
+                break;
+            case R.id.btnThread:
+//                startActivity(new Intent(this, ThreadActivity.class));
+//                break;
+                throw new RuntimeException("运行异常");
         }
     }
-
 
 
     private void gongchang() {

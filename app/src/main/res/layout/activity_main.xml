@@ -20,96 +20,127 @@
         app:titleTextSize="120" />
 
 
-    <Button
-        android:id="@+id/btnDagger2"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dagger2"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnMvvm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mvvm"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnBroadcastReceiver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BroadcastReceiver"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnDagger2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="Dagger2"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnSqLite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SqLite"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnMvvm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="Mvvm"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnSqLite2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SqLite2"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
-    <Button
-        android:id="@+id/btnThisAndSuper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ThisAndSuper"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnBroadcastReceiver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="BroadcastReceiver"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Service"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnSqLite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="SqLite"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnContentProvider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ContentProvider"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnSqLite2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="SqLite2"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnRxJava"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RxJava"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
-    <Button
-        android:id="@+id/btnKotlin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kotlin"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnThisAndSuper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="ThisAndSuper"
+                android:textAllCaps="false" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="热更新1.1测试"/>
+            <Button
+                android:id="@+id/btnService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="Service"
+                android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnMvp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mvp"
-        android:textAllCaps="false"
-        android:onClick="onClickMainActivity"/>
+            <Button
+                android:id="@+id/btnContentProvider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="ContentProvider"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnRxJava"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="RxJava"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnKotlin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="Kotlin"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="热更新1.1测试" />
+
+            <Button
+                android:id="@+id/btnMvp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="Mvp"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnFanxing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="泛型"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnThread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="线程"
+                android:textAllCaps="false" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 

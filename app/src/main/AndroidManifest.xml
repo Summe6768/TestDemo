@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,InnerclassSeparator">
-        <activity android:name=".thread.ThreadActivity"></activity>
+        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".fanxing.FanxingActivity" />
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />

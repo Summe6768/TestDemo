@@ -1,7 +1,8 @@
 package com.app.summer.mvp.prsenter;
 
-import com.app.summer.mvp.model.LoginModel;
 import com.app.summer.mvp.view.LoginView;
+
+import java.lang.ref.WeakReference;
 
 /**
  *
@@ -10,19 +11,37 @@ public class LoginPresenter {
 
     // 持有LoginView接口的引用
     private LoginView mLoginView;
-    private LoginModel mLoginModel;
+
+
 
     // 传入LoginView
-    public LoginPresenter() {
+    public LoginPresenter(LoginView loginView) {
+        this.mLoginView = loginView;
 
     }
 
+    /**
+     * 登录按钮点击事件
+     * @param name
+     * @param psd
+     */
+    public void btnOnClick(String name, String psd) {
+
+        mLoginView.onClick(name, psd);
+    }
+
+    /**
+     * 登录后返回的输入内容
+     * @param name
+     * @param psd
+     */
     public void login(String name, String psd) {
 
-        if (!name.isEmpty() && !psd.isEmpty()){
-            //mLoginModel.qingqiu();
-        }
+        mLoginView.onLoginResult(name, psd);
     }
+
+
+
 
 
 }

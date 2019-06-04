@@ -4,9 +4,9 @@ package com.app.summer.mvp.view;
  *
  */
 public interface LoginView {
-    /**
-     * 处理登录结果
-     */
-    void onLoginResult(String result);
+
+    void onLoginResult(String name,String psd);
+
+    void onClick(String name, String psd);
 
 }

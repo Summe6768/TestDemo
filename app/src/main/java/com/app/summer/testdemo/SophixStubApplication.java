@@ -43,9 +43,7 @@ public class SophixStubApplication extends SophixApplication {
             appVersion = this.getPackageManager()
                     .getPackageInfo(this.getPackageName(), 0)
                     .versionName;
-        } catch (Exception e) {
-        }
-        Log.e("TAG", "initSophix 版本号是：" + appVersion );
+        } catch (Exception e) { }
         final SophixManager instance = SophixManager.getInstance();
         instance.setContext(this)
                 .setAppVersion(appVersion)

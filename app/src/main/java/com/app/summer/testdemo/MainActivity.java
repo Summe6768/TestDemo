@@ -14,6 +14,7 @@ import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
 import com.app.summer.testdemo.contentprovider.ContentProviderActivity;
 import com.app.summer.testdemo.enumtest.TestEnum;
 import com.app.summer.testdemo.fanxing.FanxingActivity;
+import com.app.summer.testdemo.handler.HandlerActivity;
 import com.app.summer.testdemo.instance.GongChang;
 import com.app.summer.testdemo.instance.interfacetest.Eat;
 
@@ -92,9 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, FanxingActivity.class));
                 break;
             case R.id.btnThread:
-//                startActivity(new Intent(this, ThreadActivity.class));
-//                break;
-                throw new RuntimeException("运行异常");
+                startActivity(new Intent(this, ThreadActivity.class));
+                break;
+            case R.id.btnHandler:
+                startActivity(new Intent(this, HandlerActivity.class));
+                break;
         }
     }
 

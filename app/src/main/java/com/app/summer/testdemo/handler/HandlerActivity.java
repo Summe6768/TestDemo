@@ -20,6 +20,8 @@ public class HandlerActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView);
 
+        //测试新建分支提交并且合并
+
         new Thread(){
             @Override
             public void run() {

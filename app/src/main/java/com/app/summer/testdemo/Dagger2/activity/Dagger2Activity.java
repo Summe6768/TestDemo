@@ -3,7 +3,9 @@ package com.app.summer.testdemo.Dagger2.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.app.summer.testdemo.Dagger2.Component.DaggerUserComponent;
 import com.app.summer.testdemo.Dagger2.module.UserModule;
@@ -100,6 +102,8 @@ public class Dagger2Activity extends AppCompatActivity {
                 .appComponent(((MyApplication)getApplication()).getAppComponent())
                 .build()
                 .inject(this);
+
+
 
         userManager.userManagerLoge();
 

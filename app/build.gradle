@@ -3,6 +3,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 //apply from: 'tinker-support.gradle'
 
+//apply plugin: 'bugly'
+//bugly {
+//    appId = '46ea81ed85' // 注册时分配的App ID
+//    appKey = 'bbe445ad-d719-47e5-ae83-3ace24132056' // 注册时分配的App Key
+//    debug = true
+//}
+
 android {
 
     compileSdkVersion compile_sdk_version

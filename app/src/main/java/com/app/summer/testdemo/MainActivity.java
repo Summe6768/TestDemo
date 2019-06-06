@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         config.put(TestEnum.A, "123");
 
         //简单工厂设计模式
-        gongchang();
+        //gongchang();
 
 
     }

@@ -90,6 +90,8 @@ dependencies {
     //阿里云热修复
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
     implementation project(':mvp')
+    implementation project(':mvvm')
 
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
 }

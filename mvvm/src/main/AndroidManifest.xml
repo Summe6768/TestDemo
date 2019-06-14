@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.summer.mvp">
+    package="com.app.summer.mvvm">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application>
-        <activity android:name=".ui.MvpTestActivity"></activity>
-        <activity android:name=".ui.MvpActivity" />
+        <activity android:name=".ui.Mvvm1Activity" />
     </application>
 
 </manifest>

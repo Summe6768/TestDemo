@@ -35,6 +35,7 @@ class KotlinActivity : AppCompatActivity(), View.OnClickListener {
 //        }
 
 
+
     }
 
     private fun fangfa(): String {

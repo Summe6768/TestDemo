@@ -47,6 +47,8 @@ public class MainActivity extends BaseActivity {
         //简单工厂设计模式
         //gongchang();
 
+        Log.e("TAG", "onCreate "  );
+
 
     }
 
@@ -121,5 +123,41 @@ public class MainActivity extends BaseActivity {
         if (eat3 != null) {
             eat3.est();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("TAG", "onStart "  );
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("TAG", "onRestart "  );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("TAG", "onResume "  );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("TAG", "onPause "  );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("TAG", "onStop "  );
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("TAG", "onDestroy "  );
     }
 }

@@ -32,7 +32,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('D:\\AndroidStudioProjects\\gitProjects\\TestDemo\\testdemo.jks')
+            storeFile file('../testdemo.jks')
             storePassword '123456'
             keyAlias = 'testdemo'
             keyPassword '123456'

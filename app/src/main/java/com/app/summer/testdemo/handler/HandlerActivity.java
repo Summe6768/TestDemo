@@ -43,7 +43,7 @@ public class HandlerActivity extends AppCompatActivity {
         }
     };
 
-    private int images[] = {R.mipmap.ic_launcher, R.mipmap.cat, R.mipmap.ic_launcher};
+    private int images[] = {R.mipmap.ic_launcher, R.mipmap.cat_cat, R.mipmap.ic_launcher};
     private int index;
 
     private MyRunnable myRunnable = new MyRunnable();

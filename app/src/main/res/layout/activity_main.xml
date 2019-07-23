@@ -154,6 +154,12 @@
                 android:text="Handler"
                 android:textAllCaps="false" />
 
+            <com.app.summer.testdemo.utlis.SingleLineZoomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="38sp"
+                android:text="这是适配TextVIew，文字只显示一行，超出后自动缩小文字"/>
+
 
         </LinearLayout>
     </ScrollView>

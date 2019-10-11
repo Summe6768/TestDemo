@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".SophixStubApplication"
@@ -22,7 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,InnerclassSeparator">
-        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".recycleView.RecycleViewActivity"></activity>
+        <activity android:name=".ViewOnTouchEvent.ViewOnTouchEventActivity" />
+        <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".fanxing.FanxingActivity" />
         <activity android:name=".kotlin.KotlinActivity" />

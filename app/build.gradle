@@ -65,6 +65,11 @@ android {
     repositories {
         mavenCentral()
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -74,6 +79,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
     //Summer的库
     implementation 'com.github.Summe6768:JingweiKu:0.4'
     //Dagger2
@@ -93,5 +99,10 @@ dependencies {
     implementation project(':mvvm')
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    implementation 'cn.bingoogolapple:bga-refreshlayout:1.1.7'
+
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5'//没有使用特殊Header，可以不加这行
 
 }

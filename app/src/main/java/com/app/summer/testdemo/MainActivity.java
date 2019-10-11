@@ -8,6 +8,8 @@ import android.view.View;
 import com.app.summer.mvp.ui.MvpActivity;
 import com.app.summer.mvvm.ui.Mvvm1Activity;
 import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
+import com.app.summer.testdemo.ViewOnTouchEvent.ViewOnTouchEventActivity;
+import com.app.summer.testdemo.bean.SetListBean;
 import com.app.summer.testdemo.broadcastreceiver.BroadcastReceiverActivity;
 import com.app.summer.testdemo.contentprovider.ContentProviderActivity;
 import com.app.summer.testdemo.enumtest.TestEnum;
@@ -18,14 +20,23 @@ import com.app.summer.testdemo.instance.interfacetest.Eat;
 
 import com.app.summer.testdemo.kotlin.KotlinActivity;
 import com.app.summer.testdemo.mvvm.MvvmActivity;
+import com.app.summer.testdemo.proxy.dynamicProxy.GuitaiA;
+import com.app.summer.testdemo.proxy.dynamicProxy.MaotaiJiu;
+import com.app.summer.testdemo.proxy.dynamicProxy.SellWine;
+import com.app.summer.testdemo.proxy.staticProxy.Cinema;
+import com.app.summer.testdemo.proxy.staticProxy.Movie;
+import com.app.summer.testdemo.proxy.staticProxy.RealMovie;
+import com.app.summer.testdemo.recycleView.RecycleViewActivity;
 import com.app.summer.testdemo.rxjava.RxJavaActivity;
 import com.app.summer.testdemo.service.ServiceActivity;
 import com.app.summer.testdemo.sqlite.SqlLiteActivity;
 import com.app.summer.testdemo.sqlite2.MySQLiteActivity;
 import com.app.summer.testdemo.thisandsuper.ThisAndSuperActivity;
 import com.app.summer.testdemo.thread.ThreadActivity;
+import com.app.summer.testdemo.utlis.SetList;
 
 
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 
 public class MainActivity extends BaseActivity {
@@ -36,6 +47,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
@@ -48,6 +60,22 @@ public class MainActivity extends BaseActivity {
         //gongchang();
 
         Log.e("TAG", "onCreate "  );
+
+        //静态代理模式
+        staticProxy();
+        //动态代理模式
+        dynamicProxy();
+
+        SetList<SetListBean> setList = new SetList<>();
+
+        setList.add(new SetListBean("11111",1));
+        setList.add(new SetListBean("11111",1));
+
+        setList.add(new SetListBean("22222",1));
+        setList.add(new SetListBean("22222",1));
+
+        Log.e("TAG", "onCreate SetList:" + setList);
+
 
 
     }
@@ -105,6 +133,12 @@ public class MainActivity extends BaseActivity {
             case R.id.btnHandler:
                 startActivity(new Intent(this, HandlerActivity.class));
                 break;
+            case R.id.viewOnTouchEvent:
+                startActivity(new Intent(this, ViewOnTouchEventActivity.class));
+                break;
+            case R.id.btn_recycleView:
+                startActivity(new Intent(this, RecycleViewActivity.class));
+                break;
         }
     }
 
@@ -159,5 +193,28 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.e("TAG", "onDestroy "  );
+    }
+
+    /**
+     * 静态代理模式
+     */
+    private void staticProxy(){
+        RealMovie realMovie = new RealMovie();
+        Cinema cinema = new Cinema(realMovie);
+        cinema.play();
+    }
+
+    /**
+     * 动态代理模式
+     */
+    private void dynamicProxy(){
+        MaotaiJiu maotaiJiu = new MaotaiJiu();
+        GuitaiA guitaiA = new GuitaiA(maotaiJiu);
+
+        SellWine dynamicProxy = (SellWine) Proxy.newProxyInstance(MaotaiJiu.class.getClassLoader(),
+                MaotaiJiu.class.getInterfaces(), guitaiA);
+
+        dynamicProxy.mainJiu();
+
     }
 }

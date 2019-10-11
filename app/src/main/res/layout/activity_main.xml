@@ -29,6 +29,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.app.summer.testdemo.CustomView.MyCustomView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
             <Button
                 android:id="@+id/btnDagger2"
                 android:layout_width="match_parent"
@@ -159,6 +164,20 @@
                 android:layout_height="wrap_content"
                 android:textSize="38sp"
                 android:text="这是适配TextVIew，文字只显示一行，超出后自动缩小文字"/>
+
+            <Button
+                android:id="@+id/viewOnTouchEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="ViewOnTouchEvent"/>
+
+            <Button
+                android:id="@+id/btn_recycleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickMainActivity"
+                android:text="recycleView"/>
 
 
         </LinearLayout>

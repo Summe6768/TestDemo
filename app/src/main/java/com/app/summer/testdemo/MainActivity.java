@@ -1,12 +1,15 @@
 package com.app.summer.testdemo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.app.summer.mvp.ui.MvpActivity;
 import com.app.summer.mvvm.ui.Mvvm1Activity;
+import com.app.summer.testdemo.CustomView.CompletedView;
 import com.app.summer.testdemo.Dagger2.activity.Dagger2Activity;
 import com.app.summer.testdemo.ViewOnTouchEvent.ViewOnTouchEventActivity;
 import com.app.summer.testdemo.bean.SetListBean;
@@ -38,6 +41,15 @@ import com.app.summer.testdemo.utlis.SetList;
 
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity {
 
@@ -45,11 +57,53 @@ public class MainActivity extends BaseActivity {
 
     private HashMap<Object, Object> config = new HashMap<>();
 
+    private int mTotalProgress = 100;
+    private int mCurrentProgress = 0;
+    //进度条
+    private CompletedView mTasksView;
+
+    TextView tvRxJava;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
+
+        tvRxJava = findViewById(R.id.tvRxJava);
+
+        Observable.interval(2, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.e("jw", "onSubscribe ");
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Log.e("jw", "onNext :" + aLong);
+                        Log.e("jw", "onNext :" + Thread.currentThread().getName());
+                        tvRxJava.setText("" + aLong);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("jw", "onError: " + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("jw", "onComplete ");
+                    }
+                });
+
+        mTasksView = (CompletedView) findViewById(R.id.tasks_view);
+
+        new Thread(new ProgressRunable()).start();
+
 
         for (TestEnum testEnum : TestEnum.values()) {
             //Log.e(TAG, "onCreate: " + testEnum);
@@ -59,7 +113,7 @@ public class MainActivity extends BaseActivity {
         //简单工厂设计模式
         //gongchang();
 
-        Log.e("TAG", "onCreate "  );
+        Log.e("TAG", "onCreate ");
 
         //静态代理模式
         staticProxy();
@@ -68,16 +122,30 @@ public class MainActivity extends BaseActivity {
 
         SetList<SetListBean> setList = new SetList<>();
 
-        setList.add(new SetListBean("11111",1));
-        setList.add(new SetListBean("11111",1));
+        setList.add(new SetListBean("11111", 1));
+        setList.add(new SetListBean("11111", 1));
 
-        setList.add(new SetListBean("22222",1));
-        setList.add(new SetListBean("22222",1));
+        setList.add(new SetListBean("22222", 1));
+        setList.add(new SetListBean("22222", 1));
 
         Log.e("TAG", "onCreate SetList:" + setList);
 
 
+    }
 
+    class ProgressRunable implements Runnable {
+        @Override
+        public void run() {
+            while (mCurrentProgress < mTotalProgress) {
+                mCurrentProgress += 1;
+                mTasksView.setProgress(mCurrentProgress);
+                try {
+                    Thread.sleep(90);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override
@@ -162,43 +230,43 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("TAG", "onStart "  );
+        Log.e("TAG", "onStart ");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.e("TAG", "onRestart "  );
+        Log.e("TAG", "onRestart ");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("TAG", "onResume "  );
+        Log.e("TAG", "onResume ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e("TAG", "onPause "  );
+        Log.e("TAG", "onPause ");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("TAG", "onStop "  );
+        Log.e("TAG", "onStop ");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("TAG", "onDestroy "  );
+        Log.e("TAG", "onDestroy ");
     }
 
     /**
      * 静态代理模式
      */
-    private void staticProxy(){
+    private void staticProxy() {
         RealMovie realMovie = new RealMovie();
         Cinema cinema = new Cinema(realMovie);
         cinema.play();
@@ -207,7 +275,7 @@ public class MainActivity extends BaseActivity {
     /**
      * 动态代理模式
      */
-    private void dynamicProxy(){
+    private void dynamicProxy() {
         MaotaiJiu maotaiJiu = new MaotaiJiu();
         GuitaiA guitaiA = new GuitaiA(maotaiJiu);
 

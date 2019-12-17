@@ -34,6 +34,22 @@
                 android:layout_height="wrap_content"
                 />
 
+            <com.app.summer.testdemo.CustomView.CompletedView
+                android:id="@+id/tasks_view"
+                android:layout_width="223dp"
+                android:layout_height="223dp"
+                app:circleColor="@color/white"
+                app:radius="50dip"
+                app:ringBgColor="@color/white2"
+                app:ringColor="@color/colorRed"
+                app:strokeWidth="10dip"/>
+
+            <TextView
+                android:id="@+id/tvRxJava"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="哈哈"/>
+
             <Button
                 android:id="@+id/btnDagger2"
                 android:layout_width="match_parent"
